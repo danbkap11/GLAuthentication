@@ -1,0 +1,16 @@
+﻿@using WebApplication1.Data
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Student>
+<div>
+    <ul>
+    @foreach (var stud in Model)
+    {
+        <li>
+        <a asp-action="Select" asp-route-id="@stud.Id">@stud.Name @stud.Group</a>
+        </li>
+    }
+    </ul>
+</div>

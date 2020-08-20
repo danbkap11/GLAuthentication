@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Select";
+}
+@model SelectModel
+
+<h1>Student @Model.Student.Name</h1>
+<div class="container">
+    <form method="post" asp-action="Select">
+        @foreach (var seldisc in Model.SelectedDiscs)
+        {
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="selectedDiscsIds" value="@seldisc.Id" checked />
+                    @seldisc.Title
+                </label>
+            </div>
+        }
+        <hr />
+        @foreach (var nonseldisc in Model.NotSelectedDiscs)
+        {
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="selectedDiscsIds" value="@nonseldisc.Id" unchecked />
+                    @nonseldisc.Title
+                </label>
+            </div>
+        }
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+        <input type="hidden" name="studId" value="@Model.Student.Id" />
+    </form>
+</div>
+
+
